@@ -210,6 +210,11 @@ def ready_pr():
     )
     print("  ✓ 已将 Draft PR 转为 Ready for review")
 def merge_pr():
+    # 检查 token 权限
+    r_check = requests.get(f"{API}/repos/{REPO}", headers=GH)
+    permissions = r_check.json().get("permissions", {})
+    print(f"  [debug] repo permissions={permissions}")
+    
     r = requests.put(f"{API}/repos/{REPO}/pulls/{PR_NUMBER}/merge", headers=GH, json={
         "merge_method": "merge",
         "commit_title": f"[自动合并] {PR_TITLE}",
