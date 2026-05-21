@@ -429,7 +429,7 @@ fun SportsListPreview() {
     }
 }
 
-// 小屏模式预览
+
 @Preview(showSystemUi = true, device = "spec:width=360dp,height=640dp,dpi=480")
 @Composable
 fun SportsAppCompactPreview() {
